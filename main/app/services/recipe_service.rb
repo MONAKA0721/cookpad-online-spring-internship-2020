@@ -15,7 +15,6 @@ class RecipeService < Main::Services::V1::Recipe::Service
     page = request.page unless request.page.zero?
     per_page = request.per_page unless request.per_page.zero?
 
-    # TODO: Avoid to N+1 query, Use index
     recipes = Recipe.
       order(created_at: :desc).
       page(page).
